@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+
+metadata:
+   name: cpupod2
+spec:
+  containers:
+    - name: cpucont2
+      image: nginx
+      resources:
+         limits:
+            cpu: "1"
