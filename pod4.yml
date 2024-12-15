@@ -1,0 +1,14 @@
+kind: Pod
+apiVersion: v1
+
+metadata:
+    name: testpod4
+
+spec:
+  containers:
+     - name: c00
+       image: ubuntu
+       command: ["bin/bash", "-c", "while true; do echo Hello-Satish; sleep 5; done"]
+       env:
+        - name: MYNAME
+          value: GIRI
