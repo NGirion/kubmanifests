@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  initContainers:
+    - name: c1
+      image: centos
+      command: ["/bin/bash", "-c", "echo 'Hello-Satish' > /tmp/c1dir/girifile; sleep 20"]
+      volumeMounts:
+        - name: myvol
+          mountPath: "/tmp/c1dir"
+
+  containers:
+    - name: c2
+      image: centos
+      command: ["/bin/bash", "-c", "sleep infinity"]
+      volumeMounts:
+        - name: myvol
+          mountPath: "/tmp/c2dir"
+
+  volumes:
+    - name: myvol
+      emptyDir: {}
+      
