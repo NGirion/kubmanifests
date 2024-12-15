@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+   name: mypod
+spec:
+   containers:
+     - name: mycont
+       image: ubuntu
+       command: ["/bin/bash", "-c", "touch /tmp/myfile; sleep 10000"]
+
+       livenessProbe:
+         exec:
+           command:
+             - cat
+             - /tmp/myfile
+         initialDelaySeconds: 10
+         periodSeconds: 10
+         timeoutSeconds: 30
