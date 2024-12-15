@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ebspvdeploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mypv
+  template:
+    metadata:
+      labels:
+        app: mypv
+    spec:
+      containers:
+        - name: c01
+          image: centos
+          command: ["/bin/bash", "-c", "while true; do echo 'container is running'; sleep 1000; done"]
+          volumeMounts:
+            - name: myvolume
+              mountPath: "/tmp/contvol"
+      volumes:
+        - name: myvolume
+          persistentVolumeClaim:
+            claimName: myebsvolclaim
