@@ -1,0 +1,14 @@
+kind: Pod
+apiVersion: v1
+
+metadata:
+   name: labelspod2
+   labels:
+      day: sat
+      class: kubernetes
+
+spec:
+  containers:
+    - name: c00
+      image: ubuntu
+      command: ["bin/bash", "-c", "while true; do echo Hello-Satish; sleep 5; done"]
