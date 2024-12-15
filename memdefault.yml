@@ -1,0 +1,11 @@
+apiVersion: v1                      # The API version for the LimitRange resource.
+kind: LimitRange                     # The kind of resource, which is LimitRange.
+metadata:
+  name: mymemlimitrange              # Name of the LimitRange resource.
+spec:
+  limits:
+    - max:                           # Maximum resource limits.
+        memory: 1Gi                   # The maximum amount of memory a container can use in this namespace.
+      min:                           # Minimum resource limits.
+        memory: 500Mi                 # The minimum amount of memory a container must request in this namespace.
+      type: Container                 # This limit applies to individual containers.
