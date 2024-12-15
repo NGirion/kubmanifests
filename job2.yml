@@ -1,0 +1,15 @@
+ata:
+   name: myjob
+
+spec:
+  parallelism: 5
+  template:
+     metadata:
+        name: testjob
+
+     spec:
+        containers:
+          - name: mycont
+            image: centos
+            command: ["/bin/bash", "-c", "echo giri; sleep 20"]
+        restartPolicy: Never
