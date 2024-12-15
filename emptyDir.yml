@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+   name: mypod
+
+spec:
+  containers:
+    - name: c1
+      image: centos
+      command: ["/bin/bash", "-c", "while true; do echo 'Container1 is running'; sleep 1000; done"]
+      volumeMounts:
+         - name: podvol
+           mountPath: '/tmp/c1dir'
+
+
+    - name: c2
+      image: centos
+      command: ["/bin/bash", "-c", "while true; do echo 'Container2 is running'; sleep 1000; done"]
+      volumeMounts:
+         - name: podvol
+           mountPath: "/tmp/c2dir"
+
+  volumes:
+   - name: podvol
+     emptyDir: {}
