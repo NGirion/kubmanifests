@@ -1,0 +1,15 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: myjob
+spec:
+  schedule: "* * * * *"  # 5-field cron format
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: mycont
+              image: ubuntu
+              command: ["/bin/bash", "-c", "echo giri; sleep 10"]
+          restartPolicy: Never
